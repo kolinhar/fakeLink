@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Link Faker</title>
+    <style>
+        *{box-sizing: border-box;}
+        body{display: flex; flex-direction: column; flex-wrap: wrap; min-height: 100vh;}
+        h2{text-align: center;}
+        .flexbox{flex:1; display: flex;flex-direction: row; flex-wrap: wrap;}
+        .flexbox>*{flex:1; margin: 10px}
+        .flexbox>div>*:last-child{margin: 10px 0 0;}
+        input{width: 100%;}
+        footer{text-align: center}
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Interface de génération de lien</h2>
+    </header>
+
+    <div class="flexbox">
+        <div>
+            <label>Lien à afficher:
+                <input type="text" id="affichage">
+            </label>
+            <label>Lien réel:
+                <input type="text" id="reel">
+            </label>
+        </div>
+        <div>
+            <p>Résultat:</p>
+            <p>
+                <a id="resultat" href="#" title="lien à afficher" target="_blank" rel="noopener noreferrer">lien final</a>
+            </p>
+        </div>
+    </div>
+    <footer>
+        <span>Le <a href="https://github.com/kolinhar/fakeLink" target="_blank" rel="noopener noreferrer" title="https://github.com/kolinhar/fakeLink">GitHub</a></span>
+
+    </footer>
+    <script>
+        const lien = document.querySelector("#resultat");
+
+        function changeAff(e) {
+            lien.title = e.target.value.trim();
+            lien.innerHTML = e.target.value.trim();
+        }
+
+        function changeLien(e) {
+            lien.href = e.target.value.trim();
+        }
+
+        document.querySelector("#affichage").addEventListener("keydown", changeAff, false);
+        document.querySelector("#affichage").addEventListener("change", changeAff, false);
+
+        document.querySelector("#reel").addEventListener("keydown", changeLien, false);
+        document.querySelector("#reel").addEventListener("change", changeLien, false);
+    </script>
+</body>
+</html>
